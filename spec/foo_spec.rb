@@ -24,13 +24,13 @@ class EnglishNumerator
         0 => '',
         5 => "fifty",
     }
-    if arabicToEnglish > 19
-      return powers_of_ten_by_number[arabicToEnglish / 10] + least_siginificant_by_number[arabicToEnglish % 10]
+    if arabicToEnglish <= 13
+      return least_siginificant_by_number[arabicToEnglish ]
     end
-    if arabicToEnglish > 13
+    if arabicToEnglish <= 19
       return least_siginificant_by_number[arabicToEnglish % 10] + "teen"
     end
-    least_siginificant_by_number[arabicToEnglish ]
+    return powers_of_ten_by_number[arabicToEnglish / 10] + least_siginificant_by_number[arabicToEnglish % 10]
   end
 
 end
