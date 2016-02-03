@@ -24,11 +24,13 @@ class EnglishNumerator
         0 => '',
         5 => "fifty",
     }
+
+    # TODO introduce local variables for first, second, third digit
     if arabicToEnglish % 100 == 0
-      return least_siginificant_by_number[ arabicToEnglish / 100] + " hundred"
+      return least_siginificant_by_number[ arabicToEnglish / 100 % 10] + " hundred"
     end
     if arabicToEnglish > 100
-      return least_siginificant_by_number[ arabicToEnglish / 100] + " hundred" + " and " + of(arabicToEnglish % 100)
+      return least_siginificant_by_number[ arabicToEnglish / 100 % 10] + " hundred" + " and " + of(arabicToEnglish % 100)
     end
     if arabicToEnglish <= 13
       return least_siginificant_by_number[arabicToEnglish ]
@@ -36,7 +38,7 @@ class EnglishNumerator
     if arabicToEnglish <= 19
       return least_siginificant_by_number[arabicToEnglish % 10] + "teen"
     end
-    return powers_of_ten_by_number[arabicToEnglish / 10] + least_siginificant_by_number[arabicToEnglish % 10]
+    return powers_of_ten_by_number[arabicToEnglish / 10 % 10] + least_siginificant_by_number[arabicToEnglish % 10]
   end
 
 end
