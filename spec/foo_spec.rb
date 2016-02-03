@@ -27,6 +27,9 @@ class EnglishNumerator
     if arabicToEnglish % 100 == 0
       return least_siginificant_by_number[ arabicToEnglish / 100] + " hundred"
     end
+    if arabicToEnglish > 100
+      return least_siginificant_by_number[ arabicToEnglish / 100] + " hundred" + " and " + of(arabicToEnglish % 100)
+    end
     if arabicToEnglish <= 13
       return least_siginificant_by_number[arabicToEnglish ]
     end
@@ -70,6 +73,9 @@ describe EnglishNumerator do
   context 'for numbers less than 1000' do
     it 'boundary of 100' do
       expect( numerator.of(100)).to eq "one hundred"
+    end
+    it '101' do
+      expect( numerator.of(101)).to eq "one hundred and one"
     end
   end
 
