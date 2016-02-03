@@ -18,7 +18,7 @@ class EnglishNumerator
         # 10 => "two",
         # 11 => "two",
         # 12 => "two",
-        # 13 => "two",
+        13 => "thirteen"
     }
     powers_of_ten_by_number = {
         0 => '',
@@ -30,7 +30,7 @@ class EnglishNumerator
     if arabicToEnglish > 13
       return least_siginificant_by_number[arabicToEnglish - 10] + "teen"
     end
-    powers_of_ten_by_number[arabicToEnglish / 10] + least_siginificant_by_number[arabicToEnglish % 10]
+    least_siginificant_by_number[arabicToEnglish ]
   end
 
 end
@@ -44,7 +44,9 @@ describe EnglishNumerator do
       expect(numerator.of(1)).to eq "one"
     end
 
-    #we need one for 13
+    it 'e.g. 13' do
+      expect(numerator.of(13)).to eq "thirteen"
+    end
   end
 
   context 'for numbers less than 20' do
