@@ -24,6 +24,9 @@ class EnglishNumerator
         0 => '',
         5 => "fifty",
     }
+    if arabicToEnglish % 100 == 0
+      return least_siginificant_by_number[ arabicToEnglish / 100] + " hundred"
+    end
     if arabicToEnglish <= 13
       return least_siginificant_by_number[arabicToEnglish ]
     end
@@ -61,6 +64,12 @@ describe EnglishNumerator do
     end
     it 'not dividable by ten, e.g. 54' do
       expect( numerator.of(54)).to eq "fiftyfour"
+    end
+  end
+
+  context 'for numbers less than 1000' do
+    it 'boundary of 100' do
+      expect( numerator.of(100)).to eq "one hundred"
     end
   end
 
