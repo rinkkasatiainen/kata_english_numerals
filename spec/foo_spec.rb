@@ -28,7 +28,7 @@ class EnglishNumerator
       return powers_of_ten_by_number[arabicToEnglish / 10] + least_siginificant_by_number[arabicToEnglish % 10]
     end
     if arabicToEnglish > 13
-      return least_siginificant_by_number[arabicToEnglish - 10] + "teen"
+      return least_siginificant_by_number[arabicToEnglish % 10] + "teen"
     end
     least_siginificant_by_number[arabicToEnglish ]
   end
