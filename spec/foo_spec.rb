@@ -27,6 +27,9 @@ class EnglishNumerator
       return powers_of_ten_by_number[arabicToEnglish / 10]
     end
 
+    if arabicToEnglish > 19
+      return powers_of_ten_by_number[arabicToEnglish / 10] + least_siginificant_by_number[arabicToEnglish % 10]
+    end
     if arabicToEnglish > 13
       return least_siginificant_by_number[arabicToEnglish - 10] + "teen"
     end
@@ -37,11 +40,11 @@ end
 
 describe EnglishNumerator do
 
-  numertor = EnglishNumerator.new
+  numerator = EnglishNumerator.new
 
   context 'for numbers less than 14' do
     it 'e.g. 1' do
-      expect(numertor.of(1)).to eq "one"
+      expect(numerator.of(1)).to eq "one"
     end
 
     #we need one for 13
@@ -49,19 +52,17 @@ describe EnglishNumerator do
 
   context 'for numbers less than 20' do
     it 'e.g. 14' do
-      expect(numertor.of(14)).to eq "fourteen"
+      expect(numerator.of(14)).to eq "fourteen"
     end
   end
 
   context 'for numbers less than 100' do
     it 'dividable by ten, e.g. 50' do
-      expect( numertor.of(50)).to eq "fifty"
+      expect( numerator.of(50)).to eq "fifty"
     end
     it 'not dividable by ten, e.g. 54' do
-      expect( numertor.of(54)).to eq "fiftyfour"
+      expect( numerator.of(54)).to eq "fiftyfour"
     end
   end
-
-
 
 end
