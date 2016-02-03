@@ -5,6 +5,7 @@ class EnglishNumerator
   def of ( arabicToEnglish )
     # TODO make class with constants of languae only EnglishNumbers
     least_siginificant_by_number = {
+        0 => "",
         1 => "one",
         2 => "two",
         3 => "three",
@@ -23,10 +24,6 @@ class EnglishNumerator
         0 => '',
         5 => "fifty",
     }
-    if arabicToEnglish % 10 == 0
-      return powers_of_ten_by_number[arabicToEnglish / 10]
-    end
-
     if arabicToEnglish > 19
       return powers_of_ten_by_number[arabicToEnglish / 10] + least_siginificant_by_number[arabicToEnglish % 10]
     end
