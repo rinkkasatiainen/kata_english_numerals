@@ -15,10 +15,6 @@ class EnglishNumerator
         # 7 => "two",
         # 8 => "two",
         9 => "nine",
-        # 10 => "two",
-        # 11 => "two",
-        # 12 => "two",
-        13 => "thirteen",
     }
     powers_of_ten_by_number = {
         0 => '',
@@ -51,17 +47,21 @@ class EnglishNumerator
     #   )
     # )
 
+    specials = {
+        11 => "eleven",
+        13 => "thirteen",
+        14 => "fourteen",
+        19 => "nineteen"
+    }
+
     ones = arabicToEnglish % 10
 
-    if arabicToEnglish <= 13
-      return least_siginificant_by_number[arabicToEnglish ]
-    end
-    if arabicToEnglish <= 19
-      return of(ones) + "teen"
+    if specials.include? arabicToEnglish
+      return specials[arabicToEnglish]
     end
     if arabicToEnglish <= 99
       tens = arabicToEnglish / 10 % 10
-      return powers_of_ten_by_number[tens] + of(ones)
+      return powers_of_ten_by_number[tens] + least_siginificant_by_number[ones]
     end
     if arabicToEnglish <= 999
       hundreds = arabicToEnglish / 100 % 10
