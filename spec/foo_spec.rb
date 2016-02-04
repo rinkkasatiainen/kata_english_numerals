@@ -64,12 +64,18 @@ class EnglishNumerator
       return powers_of_ten_by_number[tens] + least_siginificant_by_number[remainder]
     end
 
-    if arabicToEnglish < 100 * 10
-      hundreds = arabicToEnglish / 100 % 10
-      remainder = arabicToEnglish % 100
-      add_with_and(of(hundreds) + " hundred", of(remainder) )
+    yields_with arabicToEnglish, 100 do | hundreds, remainder |
+      return add_with_and(of(hundreds) + " hundred", of(remainder) )
     end
 
+  end
+
+  def yields_with( arabicToEnglish, multiples_of)
+    if arabicToEnglish < multiples_of * 10
+      multiples = arabicToEnglish / multiples_of % 10
+      remainder = arabicToEnglish % multiples_of
+      yield  multiples, remainder
+    end
   end
 
   def add_with_and( hundreds, remainder )
