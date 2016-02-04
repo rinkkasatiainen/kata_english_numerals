@@ -58,18 +58,18 @@ class EnglishNumerator
       return specials[arabicToEnglish]
     end
 
-    yields_with arabicToEnglish, 10 do | tens , remainder |
+    if_below arabicToEnglish, 100 do | tens , remainder |
       return powers_of_ten_by_number[tens] + least_siginificant_by_number[remainder]
     end
 
-    yields_with arabicToEnglish, 100 do | hundreds, remainder |
+    if_below arabicToEnglish, 1000 do | hundreds, remainder |
       return add_with_and(of(hundreds) + " hundred", of(remainder) )
     end
-
   end
 
-  def yields_with( arabicToEnglish, multiples_of)
-    if arabicToEnglish < multiples_of * 10
+  def if_below(arabicToEnglish, limit)
+    if arabicToEnglish < limit
+      multiples_of = limit / 10
       multiples = arabicToEnglish / multiples_of % 10
       remainder = arabicToEnglish % multiples_of
       yield  multiples, remainder
