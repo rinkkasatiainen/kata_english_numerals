@@ -65,6 +65,7 @@ class EnglishNumerator
     if_below arabicToEnglish, 1000 do | hundreds, remainder |
       return add_with_and(of(hundreds) + " hundred", of(remainder) )
     end
+
   end
 
   def if_below(arabicToEnglish, limit)
@@ -124,6 +125,14 @@ describe EnglishNumerator do
     it 'e.g. 324' do
       expect( numerator.of(324)).to eq "three hundred and twentyfour"
     end
+  end
+
+  context 'for numbers less than 1.000.000' do
+    it 'e.g. 324101' do
+      pending()
+      expect( numerator.of(324101)).to eq "three hundred and twentyfour thousand one hundred and one"
+    end
+
   end
 
 end
