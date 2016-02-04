@@ -18,10 +18,11 @@ class EnglishNumerator
         # 10 => "two",
         # 11 => "two",
         # 12 => "two",
-        13 => "thirteen"
+        13 => "thirteen",
     }
     powers_of_ten_by_number = {
         0 => '',
+        2 => "twenty",
         5 => "fifty",
     }
 
@@ -65,7 +66,7 @@ describe EnglishNumerator do
     it 'boundary 14' do
       expect(numerator.of(14)).to eq "fourteen"
     end
-    it 'e.g. 19' do
+    it 'boundary 19' do
       expect(numerator.of(19)).to eq "nineteen"
     end
   end
@@ -83,8 +84,11 @@ describe EnglishNumerator do
     it 'boundary of 100' do
       expect( numerator.of(100)).to eq "one hundred"
     end
-    it '101' do
+    it 'e.g. 101' do
       expect( numerator.of(101)).to eq "one hundred and one"
+    end
+    it 'e.g. 324' do
+      expect( numerator.of(324)).to eq "three hundred and twentyfour"
     end
   end
 
