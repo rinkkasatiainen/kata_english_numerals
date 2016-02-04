@@ -66,12 +66,12 @@ class EnglishNumerator
     if arabicToEnglish <= 999
       hundreds = arabicToEnglish / 100 % 10
       remainderOfHundred = arabicToEnglish % 100
-      stuff = of(hundreds) + " hundred"
-      if remainderOfHundred == 0
-        return stuff
-      end
-      return stuff + " and " + of(remainderOfHundred)
+      add_with_and(of(hundreds) + " hundred", of(remainderOfHundred) )
     end
+  end
+
+  def add_with_and( hundreds, remainder )
+    return hundreds + ( remainder.empty? ? "" : " and #{remainder}" )
   end
 
 end
