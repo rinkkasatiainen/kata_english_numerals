@@ -14,7 +14,7 @@ class EnglishNumerator
         # 6 => "two",
         # 7 => "two",
         # 8 => "two",
-        # 9 => "two",
+        9 => "nine",
         # 10 => "two",
         # 11 => "two",
         # 12 => "two",
@@ -52,18 +52,21 @@ describe EnglishNumerator do
   numerator = EnglishNumerator.new
 
   context 'for numbers less than 14' do
-    it 'e.g. 1' do
+    it 'boundary 1' do
       expect(numerator.of(1)).to eq "one"
     end
 
-    it 'e.g. 13' do
+    it 'boundry 13' do
       expect(numerator.of(13)).to eq "thirteen"
     end
   end
 
   context 'for numbers less than 20' do
-    it 'e.g. 14' do
+    it 'boundary 14' do
       expect(numerator.of(14)).to eq "fourteen"
+    end
+    it 'e.g. 19' do
+      expect(numerator.of(19)).to eq "nineteen"
     end
   end
 
