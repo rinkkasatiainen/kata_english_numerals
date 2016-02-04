@@ -52,16 +52,16 @@ class EnglishNumerator
     # )
 
     ones = arabicToEnglish % 10
-    tens = arabicToEnglish / 10 % 10
 
     if arabicToEnglish <= 13
       return least_siginificant_by_number[arabicToEnglish ]
     end
     if arabicToEnglish <= 19
-      return least_siginificant_by_number[ones] + "teen"
+      return of(ones) + "teen"
     end
     if arabicToEnglish <= 99
-      return powers_of_ten_by_number[tens] + least_siginificant_by_number[ones]
+      tens = arabicToEnglish / 10 % 10
+      return powers_of_ten_by_number[tens] + of(ones)
     end
     if arabicToEnglish <= 999
       hundreds = arabicToEnglish / 100 % 10
