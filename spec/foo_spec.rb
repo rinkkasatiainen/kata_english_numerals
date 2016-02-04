@@ -66,10 +66,11 @@ class EnglishNumerator
     if arabicToEnglish <= 999
       hundreds = arabicToEnglish / 100 % 10
       remainderOfHundred = arabicToEnglish % 100
+      stuff = of(hundreds) + " hundred"
       if remainderOfHundred == 0
-        return least_siginificant_by_number[hundreds] + " hundred"
+        return stuff
       end
-      return least_siginificant_by_number[hundreds] + " hundred" + " and " + of(remainderOfHundred)
+      return stuff + " and " + of(remainderOfHundred)
     end
   end
 
