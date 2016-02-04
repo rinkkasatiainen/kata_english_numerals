@@ -58,9 +58,7 @@ class EnglishNumerator
       return specials[arabicToEnglish]
     end
 
-    if arabicToEnglish < 10 * 10
-      tens = arabicToEnglish / 10 % 10
-      remainder = arabicToEnglish % 10
+    yields_with arabicToEnglish, 10 do | tens , remainder |
       return powers_of_ten_by_number[tens] + least_siginificant_by_number[remainder]
     end
 
