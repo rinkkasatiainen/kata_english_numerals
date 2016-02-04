@@ -54,20 +54,22 @@ class EnglishNumerator
         19 => "nineteen"
     }
 
-    ones = arabicToEnglish % 10
-
     if specials.include? arabicToEnglish
       return specials[arabicToEnglish]
     end
-    if arabicToEnglish <= 99
+
+    if arabicToEnglish < 10 * 10
       tens = arabicToEnglish / 10 % 10
-      return powers_of_ten_by_number[tens] + least_siginificant_by_number[ones]
+      remainder = arabicToEnglish % 10
+      return powers_of_ten_by_number[tens] + least_siginificant_by_number[remainder]
     end
-    if arabicToEnglish <= 999
+
+    if arabicToEnglish < 100 * 10
       hundreds = arabicToEnglish / 100 % 10
-      remainderOfHundred = arabicToEnglish % 100
-      add_with_and(of(hundreds) + " hundred", of(remainderOfHundred) )
+      remainder = arabicToEnglish % 100
+      add_with_and(of(hundreds) + " hundred", of(remainder) )
     end
+
   end
 
   def add_with_and( hundreds, remainder )
