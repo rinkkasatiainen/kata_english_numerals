@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 
 class EnglishNumerator
   def of ( arabicToEnglish )
-    # TODO make class with constants of languae only EnglishNumbers
+    # TODO make class with constants of language only EnglishNumbers
     least_siginificant_by_number = {
         0 => "",
         1 => "one",
@@ -25,6 +25,31 @@ class EnglishNumerator
         2 => "twenty",
         5 => "fifty",
     }
+
+    # split into ones, tens and hundreds
+    # - language specific special cases or ranges
+    # translate ones, tens, hundreds
+    # concat and "and"
+
+    # # idea 1
+    # translate(arabicToEnglish).with(
+    #     {
+    #         1 => translate_ones,
+    #         10 => translate_tens,
+    #         100 => translate_ons
+    #     # how to handle 13?
+    #     }
+    # ).compose_with( compose_as_text_with_and )
+     
+    # # idea 2
+    # numbersToEnglish = split_powers <> translateTo(english()) <> joinWith("and", "", "")
+
+    # # idea 3
+    # join_powers_with_and(
+    #   translate_powers(
+    #     split_into_powers(arabicToEnglish)
+    #   )
+    # )
 
     ones = arabicToEnglish % 10
     tens = arabicToEnglish / 10 % 10
